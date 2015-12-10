@@ -4,6 +4,7 @@
  <script type="text/javascript">
 
       function handleClick() {
+	  alert("sending request");
         var http = new XMLHttpRequest();
 var url = "https://android.googleapis.com/gcm/send";
 var params = "{\"registration_ids\":[\" "+ document.getElementById("reg").value +"\"]}";
