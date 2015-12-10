@@ -1,6 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
+ <script type="text/javascript">
+
+      function handleClick() {
+        var http = new XMLHttpRequest();
+var url = "https://android.googleapis.com/gcm/send";
+var params = "{\"registration_ids\":[\" "+ document.getElementById("reg").value +"\"]}";
+http.open("POST", url, true);
+
+//Send the proper header information along with the request
+http.setRequestHeader("Content-type", "application/json");
+http.setRequestHeader("Authorization", "key=AIzaSyDwolUEQwUQ9mjRmKXUJ_0B_4L3FQ74RVg");
+
+
+http.onreadystatechange = function() {//Call a function when the state changes.
+    if(http.readyState == 4 && http.status == 200) {
+        alert(http.responseText);
+    }
+}
+http.send(params);
+      }
+
+    </script>
   <title>Push Notification for Compas</title>
   <link rel="manifest" href="manifest.json">
 </head>
@@ -8,7 +30,10 @@
   <h1>Push Notification </h1>
   <p>Push Notification Demo</p>
   <script src="main.js"></script>
-  
-<div id = "content"></div>
+
+<form onSubmit="return handleClick()">
+<input id = "reg" type = "text" name = "reg_id"/>
+<input type = "submit" value = "Click here to send yourself a push notification"/>
+</form>
 </body>
 </html>

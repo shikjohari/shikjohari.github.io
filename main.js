@@ -5,7 +5,9 @@ if ('serviceWorker' in navigator) {
         reg.pushManager.subscribe({
             userVisibleOnly: true
         }).then(function(sub) {
-		document.getElementById("content").innerHTML = sub.endpoint;
+		
+		
+		document.getElementById("reg").value = sub.endpoint.slice(sub.endpoint.lastIndexOf('/')+1);
             console.log('endpoint:', sub.endpoint);
         });
     }).catch(function(error) {
