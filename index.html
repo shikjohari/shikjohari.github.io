@@ -8,6 +8,7 @@
         var http = new XMLHttpRequest();
 var url = "https://android.googleapis.com/gcm/send";
 var params = "{\"registration_ids\":[\" "+ document.getElementById("reg").value +"\"]}";
+alert(params);
 http.open("POST", url, true);
 
 //Send the proper header information along with the request
